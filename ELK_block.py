@@ -1,6 +1,5 @@
 import torch
 import torch.nn as nn
-from timm.models.layers import DropPath
 import sys
 import os
 
@@ -122,13 +121,11 @@ class ELKBlock(nn.Module):
         self.lk_nonlinear = nn.ReLU()
         self.pw2 = conv_bn(dw_channels, dw_channels, 1, 1, 0, groups=1)
         self.prelkb_bn = get_bn(dw_channels)
-        self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
-        #print('drop path:', self.drop_path)
+       
 
         self.short = nn.Sequential()
         if (in_channels != dw_channels):
             self.short = nn.Sequential(
-                #  RepLKBlock(1,64,31,5),
                  nn.Conv2d(in_channels,dw_channels,1),
                  nn.ReLU(),
             )
@@ -140,7 +137,7 @@ class ELKBlock(nn.Module):
         out = self.lk_nonlinear(out)
         out = self.pw2(out)  
         out = self.prelkb_bn(out)   
-        return  self.short(x) + self.drop_path(out)
+        return  self.short(x) + self(out)
 
 
     
