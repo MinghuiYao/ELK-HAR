@@ -137,7 +137,7 @@ class ELKBlock(nn.Module):
         out = self.lk_nonlinear(out)
         out = self.pw2(out)  
         out = self.prelkb_bn(out)   
-        return  self.short(x) + self(out)
+        return  self.short(x) + (out)
 
 
     
