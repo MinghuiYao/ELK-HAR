@@ -110,7 +110,7 @@ class ReparamLargeKernelConv(nn.Module):
 
 
 class ELK(nn.Module):
-    def __init__(self, in_channels, dw_channels, block_lk_size, small_kernel, drop_path=0.1, small_kernel_merged=False):
+    def __init__(self, in_channels, dw_channels, block_lk_size, small_kernel,small_kernel_merged=True):
         super().__init__()
         self.pw1 = conv_bn_relu(in_channels, dw_channels, 1, 1, 0, groups=1)
         self.large_kernel = ReparamLargeKernelConv(in_channels=dw_channels, out_channels=dw_channels, kernel_size=block_lk_size,
