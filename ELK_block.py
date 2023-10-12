@@ -132,8 +132,7 @@ class ELK(nn.Module):
         out = self.pw1(x)
         out = self.large_kernel(out)
         out = self.lk_nonlinear(out)
-        out = self.pw2(out)  
-        out = self.prelkb_bn(out)   
+        out = self.pw2(out)     
         return  self.short(x) + (out)
 
 
