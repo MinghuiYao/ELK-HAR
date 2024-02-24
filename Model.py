@@ -90,4 +90,9 @@ class ELK_CNN(nn.Module):
         x = self.fc(x)
         return x
 
+    def structural_reparam(self):
+        for m in self.modules():
+            if hasattr(m, 'merge_kernel'):
+                m.merge_kernel()
+
 
