@@ -1,4 +1,4 @@
-"""Compatibility exports for the original ELK block module."""
+"""Installed compatibility exports for ``ELK_block``."""
 
 from torch import nn
 

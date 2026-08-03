@@ -1,4 +1,4 @@
-"""Backward-compatible model names from the original ELK-HAR release."""
+"""Installed compatibility exports for the original ``Model`` module."""
 
 from elk_har.legacy import ELK_CNN, LK_CNN, Base_CNN
 from elk_har.models import ELKCNN, BaseCNN, LargeKernelCNN
